@@ -1,0 +1,35 @@
+leetcode 238.
+
+1)
+class Solution {
+    public int[] productExceptSelf(int[] nums) {
+        //int [] arr=new int[nums.length];
+        int countZero=0;
+        int product=1;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]==0){
+                countZero++;
+               }
+            else{
+            product=product*nums[i];
+            }}
+        if(countZero==0){
+            for(int j=0;j<nums.length;j++){
+            nums[j]=product/nums[j]; }
+              }
+        else if(countZero==1){
+        for(int j=0;j<nums.length;j++){
+            if(nums[j]==0){
+           nums[j]=product;
+            }
+            else
+            {
+                nums[j]=0;
+            }
+            }}
+            else{
+                  for(int j=0;j<nums.length;j++){
+           nums[j]=0;
+            }
+            } return nums;
+        }}
