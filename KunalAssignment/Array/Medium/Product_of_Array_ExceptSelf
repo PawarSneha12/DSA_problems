@@ -1,6 +1,6 @@
 leetcode 238.
 
-1)
+1) using the division operation.
 class Solution {
     public int[] productExceptSelf(int[] nums) {
         //int [] arr=new int[nums.length];
