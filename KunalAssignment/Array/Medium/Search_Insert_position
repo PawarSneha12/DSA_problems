@@ -1,0 +1,22 @@
+Leetcode 35
+
+//Bruth Force apporch 
+// O(n)
+
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+        int i=0;
+        for(;i<nums.length;i++){
+            if(nums[i]>=target){return i;
+            // we check in array that any element greater than or equal exit if exit then return that index number 
+            //otherwise return 0 index
+       }
+            }
+       return i;
+        }}
+      
+      
+      //BinarySearch
+      
+      //Log(n)
+      
