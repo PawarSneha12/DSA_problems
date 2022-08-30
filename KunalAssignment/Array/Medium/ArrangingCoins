@@ -1,0 +1,43 @@
+Leetcode 441
+
+// here coin were given , we had arrange the coins and return the numbers of stairs we had build with the help of given coins
+for this question there are 3 solution O(sqrt(n)),O(lon(n)), and O(1)
+
+// 
+
+{
+int i=1;
+while(N>=i)
+{
+N=N-i;
+i++;
+}
+return i-1;
+
+
+//binary search
+
+long start =0;
+long end =n;
+while(start<=end){
+long mid =start+(end-start)/2;
+if(mid*(mid+1)/2==N){
+return (int) mid;
+}
+else if(mid*(mid+1)/2<N){
+start=mid+1;
+}
+else{
+end=mid-1;}
+}
+return (int) end;
+}
+
+
+// final solution 
+
+class Solution {
+    public int arrangeCoins(int n) {
+        return (int)(-0.5+ Math.sqrt (2*(long)n+.25));
+        }
+}
