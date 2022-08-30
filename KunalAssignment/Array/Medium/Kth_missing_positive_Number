@@ -1,0 +1,27 @@
+leetcode  1539
+O(n) solution
+
+class Solution {
+    public int findKthPositive(int[] arr, int k) {
+        
+        //first we create a arraylist then we will put all the element (n-1) + k element 
+        
+       //first we make an arraylist to store the elements in order 1,2,3,4,5.....n
+        ArrayList<Integer> list =new ArrayList<>();
+        int n = arr[arr.length-1];
+        for(int i=0;i<=n+k;i++){
+            list.add(i,i+1); // at indedx i we'll put i+1 element in list
+        }
+        //for loop for removing the elements from behind cuz if we do that from starting then the arraylist 
+        //we make it reorder and we will not be removing desired leemnts ;
+        for(int i=arr.length-1;i>=0;i--){
+            int temp=arr[i];
+            list.remove(temp-1);
+        }
+          //returning the kth element -1 is done because index starts from 0 ;
+          
+        return list.get(k-1);
+    }
+}
+
+
