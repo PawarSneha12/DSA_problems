@@ -12,3 +12,20 @@ public void insertFirst(int val){
      }
     size++;
 }
+
+public void inserstLastTail(int val){
+    Node node=new Node(val);
+    node.next=null;
+    if(tail==null){
+        node.prev=null;
+        head=node;
+        tail=null;
+}
+else{
+    node.prev=tail;
+    tail.next=node;
+    tail=node;
+
+}
+size++;
+}
