@@ -1,0 +1,14 @@
+public void insertFirst(int val){
+    Node node =new Node(val);
+    node.prev=null;
+    if(head==null){
+        head=node;
+        tail=node;
+    }
+    else{
+    node.next=head;
+    head.prev=node;
+    head=node;
+     }
+    size++;
+}
