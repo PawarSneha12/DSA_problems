@@ -1,3 +1,5 @@
+//insert Element At First
+
 public void insertFirst(int val){
     Node node =new Node(val);
     node.prev=null;
@@ -13,6 +15,7 @@ public void insertFirst(int val){
     size++;
 }
 
+//insert element at end of DLL
 public void inserstLastTail(int val){
     Node node=new Node(val);
     node.next=null;
@@ -28,4 +31,27 @@ else{
 
 }
 size++;
+}
+
+
+//insert after given number
+
+public void insert_tail(int after,int value){
+    Node temp=get(after);
+    if(temp==null){
+        System.out.println("Doesn't Exits ");
+        return ;
+    }
+    Node node =new Node(value);
+    node.next=temp.next;
+    temp.next=node;
+    node.prev=temp;
+    if(node.next!=null){
+        node.next.prev=node;
+    }
+    else{
+        tail=node;
+    }
+size++;
+
 }
