@@ -1,0 +1,62 @@
+Leetcode 234
+
+//First we'll find the middle of LL 
+// then we'll reverse LL from mid till end 
+// then we'll compare orginal list first node to reverse LL first node 
+// if that nodes values are equal ,we'll both pointer forward check for next values 
+//till end 
+//return true if any of both pointer reach till end; otherwise  break the loop;
+
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        ListNode mid=middle(head);
+        //Find mid of LL
+        ListNode SecondHead=reverse(mid);
+        //reverse LL from mid 
+        ListNode revHead=SecondHead;
+        //for rereverse again
+        while(head!=null&&SecondHead!=null){
+            if(head.val!=SecondHead.val){
+                break;
+            }
+            head=head.next;
+            SecondHead=SecondHead.next;
+        }
+        reverse(revHead);
+        return head==null||SecondHead==null;
+        
+        
+    }
+    
+    public ListNode reverse(ListNode node){
+        if(node==null){
+            return node;
+        }
+        ListNode prev=null;
+        ListNode current =node;
+        ListNode Next=current.next;
+        while(current!=null)
+        {
+            current.next=prev;
+            prev=current;
+            current=Next;
+            if(Next!=null){
+                Next=Next.next;
+            }
+        }
+        return prev;
+        
+    }
+    
+    public ListNode middle(ListNode node){
+        ListNode slow=node;
+        ListNode fast=node;
+        while(fast!=null&&fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+             }
+        return slow;
+     
+ }
+    
+}
