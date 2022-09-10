@@ -1,0 +1,37 @@
+Leetcode 206
+(iterative)
+
+
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        if(head==null){
+            return head;
+        }
+        ListNode prev=null;
+        ListNode present=head;
+        ListNode Next=present.next;
+        while(present!=null){
+            present.next=prev;
+            prev=present;
+            present=Next;
+            if(Next!=null){
+                Next=Next.next;
+            }
+            
+        }
+        return prev;
+    }
+}
+
+
+// Recursive
+private void reverse(Node node){
+if(node==null){
+tail=node;
+return;
+}
+reverse(node.next);
+tail.next=node;
+tail=node;
+tail.next=null;
+}}
