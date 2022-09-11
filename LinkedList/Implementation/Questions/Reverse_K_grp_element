@@ -1,0 +1,24 @@
+
+    public static Node reverse(Node node, int k)
+    {
+        //Your code here
+        if(node==null){
+            return node;
+        }
+        Node prev=null;
+        Node curr=node;
+        Node Next=null;
+        int count=0;
+        while(curr!=null&&count<k){
+            Next=curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=Next;
+            count++;
+        }
+        if(Next!=null){
+            node.next=reverse(Next,k);
+        }
+        return prev;
+    }
+}
