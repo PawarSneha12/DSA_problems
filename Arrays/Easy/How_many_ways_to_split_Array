@@ -22,3 +22,26 @@ class Solution {
         
     }
 }
+
+
+//optimal approach
+//Leetcode 
+class Solution {
+    public int waysToSplitArray(int[] nums) {
+        int count=0;
+        long sum=0;
+        for(int it:nums){
+            
+            sum+=it;}
+        
+            long lSum=0;
+            for(int i=0;i<nums.length-1;i++){
+                lSum+=nums[i];
+                if(lSum>=sum-lSum){
+                count++;
+            }
+            }
+           return count;
+        
+        }
+}
