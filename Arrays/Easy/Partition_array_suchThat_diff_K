@@ -1,0 +1,17 @@
+//
+Leetcode 2294
+class Solution {
+    public int partitionArray(int[] nums, int k) {
+        Arrays.sort(nums);
+        int count=0;
+        for(int i=0;i<nums.length;){
+            count++;
+            int maxi=nums[i]+k;
+            while(i<nums.length&&nums[i]<=maxi){
+                i++;
+            }
+        }
+        return count;
+        
+    }
+}
