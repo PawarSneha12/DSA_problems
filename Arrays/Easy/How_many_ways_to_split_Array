@@ -1,0 +1,24 @@
+Leetcode 2270
+
+//bruth force approach
+class Solution {
+    public int waysToSplitArray(int[] nums) {
+        int count=0;
+        for(int i=0;i<nums.length-1;i++){
+            int lSum=0;
+            int rSum=0;
+            for(int j=i;j>=0;j--){
+                lSum+=nums[j];
+            }
+            for(int k=i+1;k<nums.length;k++){
+                rSum+=nums[k];
+            }
+            if(lSum>=rSum){
+                count++;
+            }
+        }
+        return count;
+        
+        
+    }
+}
