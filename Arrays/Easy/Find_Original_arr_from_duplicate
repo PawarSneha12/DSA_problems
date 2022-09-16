@@ -1,0 +1,29 @@
+Leetcode 2007
+
+class Solution {
+    public int[] findOriginalArray(int[] changed) {
+        int n=changed.length;
+        if(n%2!=0){
+            return new int[0];
+        }
+        int[] ans=new int[n/2];
+       int []arr=new int[100001] ;
+        for(int i:changed){
+            arr[i]++;
+        }
+        int in=0;
+        for(int i=0;i<100001;i++){
+            while(arr[i]>0&&i*2<100001&&arr[i*2]>0){
+                arr[i]--;
+                arr[i*2]--;
+                ans[in++]=i;
+            }
+            }
+        for(int i=0;i<100001;i++){
+            if(arr[i]!=0){
+                return new int[0];
+            }}
+        return ans;
+        
+    }
+}
