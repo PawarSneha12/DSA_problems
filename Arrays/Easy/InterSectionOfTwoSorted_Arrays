@@ -1,0 +1,60 @@
+Leetcode 349
+class Solution {
+    public int[] intersection(int[] nums1, int[] nums2) {
+        ArrayList<Integer> list=new ArrayList<>();
+        int i=0;
+        int j=0;
+        
+        while(i<nums1.length&&j<nums2.length)
+        {
+            if(nums1[i]<nums2[j]){
+                i++;
+            }
+            else if(nums2[j]<nums1[i]){
+                j++;
+            }
+            else{
+                list.add(nums1[i]);
+                i++;
+                j++;
+            }
+            while(i > 0 && i < nums1.length && nums1[i] == nums1[i-1]) i++;
+            while(j>0 && j<nums2.length && nums2[j] == nums2[j-1]) j++;
+        }
+        
+        int []arr=new int[list.size()]; 
+        for(int k=0;k<arr.length;k++){
+            arr[k]=list.get(k);
+        }
+        
+        return arr;
+       
+    }
+}
+///
+By using hashMap
+
+class Solution {
+    public int[] intersection(int[] nums1, int[] nums2) {
+       HashSet<Integer> set1=new HashSet();
+       HashSet<Integer> set2=new HashSet();
+       for(int i:nums1){
+       set1.add(i);}
+        for(int i:nums2){
+       set2.add(i);}
+       set1.retainsAll(set2);
+       /* remove all the array list's elements that are not contained in the specified collection or retains 
+       all matching elements in the current ArrayList instance that match all elements from the Collection */
+       
+       
+       
+        int []arr=new int[set1.size()]; 
+        int k=0;
+        for(int s:set1){
+            arr[k++]=s;
+        }
+        
+        return arr;
+       
+    }
+}
