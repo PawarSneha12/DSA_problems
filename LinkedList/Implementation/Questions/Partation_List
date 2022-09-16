@@ -1,0 +1,34 @@
+Leetcode 86
+
+//
+ here we made two null linked list , point with them with two pointers.......
+ then check x with node value if it is less than x then with put it to in left list anotherwise in right list
+ at end we connected left with right
+ 
+class Solution {
+    public ListNode partition(ListNode head, int x) {
+        ListNode left=new ListNode(0);
+         ListNode right=new ListNode(0);
+        ListNode leftTail=left;
+        ListNode rightTail=right;
+        while(head!=null){
+            if(head.val<x){
+                leftTail.next=head;
+                leftTail=head;
+                
+            }
+            else{
+                rightTail.next=head;
+                rightTail=head;
+                
+            }
+            head=head.next;
+        }
+        
+        leftTail.next=right.next;
+        rightTail.next=null;
+        
+        return left.next;
+        
+    }
+}
