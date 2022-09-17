@@ -1,0 +1,56 @@
+//Leetcode 2404
+//Using ArrayList
+
+class Solution {
+    public int mostFrequentEven(int[] nums) {
+        ArrayList<Integer> list=new ArrayList<>();
+        for(int i:nums){
+            if(i%2==0){
+                list.add(i);
+            }
+        }
+        
+        int freq=0;
+        int num=-1;
+        for(int i:list){
+            int f=Collections.frequency(list,i);
+            if(f>freq){
+                num=i;
+                freq=f;
+            }
+            if(f==freq){
+                num=num<i?num:i;
+            }
+        }
+        return num;
+    }
+}
+
+//Using HashMap
+
+class Solution {
+    public int mostFrequentEven(int[] nums) {
+        HashMap<Integer,Integer> hmp=new HashMap<>();
+        for(int i:nums){
+                    if(i%2==0){
+            hmp.put(i,hmp.getOrDefault(i,0)+1);}
+        }
+        
+        int freq=0;
+        int ans=-1;
+        for(Integer i:hmp.keySet()){
+            
+            if(hmp.get(i)>=freq){
+                if(hmp.get(i)==freq){
+                    ans=Math.min(ans,i);
+                }
+                else{
+                    ans=i;
+                }
+               freq=hmp.get(i); 
+            }
+            
+        }
+        return ans;
+    }
+}
