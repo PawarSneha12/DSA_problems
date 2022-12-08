@@ -1,0 +1,12 @@
+class Solution {
+    public int countNodes(TreeNode root) {
+       int count=countInOrder(root);
+        return count;
+    }
+
+    int  countInOrder(TreeNode root){
+        if(root==null){
+            return 0;}
+     return 1+countInOrder(root.left)+countInOrder(root.right);
+}
+}
