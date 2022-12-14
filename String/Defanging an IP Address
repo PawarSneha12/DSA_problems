@@ -1,0 +1,21 @@
+class Solution {
+    public String defangIPaddr(String address) {
+        if(address==null||address.length()<=0){
+            return null;
+        }
+        StringBuilder st=new StringBuilder("");
+        char[]ch=address.toCharArray();
+        for(char c:ch){
+            if(c=='.'){
+                st.append('[');
+                 st.append('.');
+                 st.append(']');
+              
+            }
+            else
+           { st.append(c);}
+        }
+
+       return st.toString(); 
+    }
+}
