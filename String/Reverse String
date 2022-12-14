@@ -1,0 +1,17 @@
+class Solution {
+    public void reverseString(char[] ch) {
+int s=0;
+int e=ch.length-1;
+while(s<=e){
+reverse(ch,s,e);
+s++;
+e--;
+}
+
+}
+   void reverse(char[]ch,int s,int e){
+        char c=ch[s];
+        ch[s]=ch[e];
+        ch[e]=c;
+    }
+}
