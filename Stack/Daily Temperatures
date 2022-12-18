@@ -23,10 +23,23 @@ class Solution {
                         }
                  
                 }
-        
-        
+   
         
         arr[temp.length-1]=0;
         return arr;
     }   
     }
+
+
+    public int[] dailyTemperatures(int[] temp) {
+       
+    Stack<Integer> stack = new Stack<>();
+    int[] ret = new int[temp.length];
+    for(int i = 0; i < temp.length; i++) {
+        while(!stack.isEmpty() && temp[i] > temp[stack.peek()]) {
+            int idx = stack.pop();
+            ret[idx] = i - idx;
+        }
+        stack.push(i);
+    }
+    return ret;
