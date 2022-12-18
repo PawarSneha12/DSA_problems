@@ -1,0 +1,32 @@
+class Solution {
+    public int[] dailyTemperatures(int[] temp) {
+        int[]arr=new int[temp.length];
+        for(int i=0;i<temp.length-1;i++){
+            if(temp[i]<temp[i+1]){
+                arr[i]=1;
+            }
+            else{
+                int count=0;
+                            for(int j=i+1;j<temp.length;j++){
+                       if(temp[i]<temp[j]){
+                        arr[i]=Math.abs(j-i);
+                        count++;
+                         break;
+                        }
+                        // else if(temp[i]>=temp[j]){
+                        //   continue;
+                        }
+                        if(count==0){
+                            arr[i]=0;
+
+                        }
+                        }
+                 
+                }
+        
+        
+        
+        arr[temp.length-1]=0;
+        return arr;
+    }   
+    }
