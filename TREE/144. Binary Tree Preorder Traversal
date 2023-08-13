@@ -1,0 +1,42 @@
+//////
+144. Binary Tree Preorder Traversal
+
+
+public class Solution {
+    public static List<Integer> getPreOrderTraversal(TreeNode root) {
+		List < Integer >list=new ArrayList<>();
+             preOrder(root, list);
+			 return list;
+	}
+	static void preOrder(TreeNode root,List < Integer >list){
+		if(root==null){
+			return;}
+		list.add(root.data);
+		preOrder(root.left,list);
+		preOrder(root.right,list);			
+    }
+}
+
+
+//////
+class Solution {
+  
+    public List<Integer> preorderTraversal(TreeNode root) {
+         List list=new  ArrayList<Integer>();
+         if(root==null){
+           return  list;
+         }
+         Stack<TreeNode> st=new Stack<>();
+         st.push(root);
+         while(!st.isEmpty()){
+           TreeNode temp=st.pop();
+           list.add(temp.val);
+           if(temp.right!=null){
+               st.push(temp.right);
+           }
+           if(temp.left!=null){
+               st.push(temp.left);
+           }
+         }
+return list;
+    }}
