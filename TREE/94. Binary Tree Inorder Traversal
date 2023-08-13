@@ -1,0 +1,42 @@
+//94. Binary Tree Inorder Traversal
+
+public class Solution {
+    public static List< Integer > getInOrderTraversal(TreeNode root) {
+        List<Integer>l=new ArrayList<>();
+        inorder(root,l);
+        return l;
+    }
+    static void inorder(TreeNode root,List<Integer> list){
+        if(root==null){
+            return;
+        }
+        inorder(root.left,list);
+        list.add(root.data);
+        inorder(root.right,list);
+    }
+}
+
+Iterative Method:------
+
+public class Solution {
+    public static List< Integer > getInOrderTraversal(TreeNode root) {
+        List<Integer> list=new ArrayList<>();
+        TreeNode temp=root;
+        Stack<TreeNode> st=new Stack<>();
+        while(true){
+           if(temp!=null){
+               st.push(temp);
+               temp=temp.left;
+           }
+           else{
+               if(st.isEmpty()){
+                   break;
+               }
+               temp=st.pop();
+               list.add(temp.data);
+               temp=temp.right;
+           }
+        }
+       return list;
+    }
+}
