@@ -1,0 +1,59 @@
+//Boundary Traversal of Binary Tree
+
+import java.util.*;
+public class Solution {
+    static boolean isLeaf(TreeNode root){
+        return (root.left==null&&root.right==null);
+    }
+  static void addLeft(TreeNode root,List<Integer> res){
+            TreeNode cur=root.left;
+           while(cur!=null){
+            if(!isLeaf(cur)){res.add(cur.data);
+} if(cur.left!=null){
+    cur=cur.left;
+}
+else{
+    cur=cur.right;
+}
+}
+}
+
+static void addRight(TreeNode root,List<Integer> res){
+    TreeNode cur=root.right;
+    ArrayList<Integer> ans=new ArrayList<>();
+    while(cur!=null){
+        if(!isLeaf(cur)){
+           ans.add(cur.data);
+        }
+        if(cur.right!=null){
+            cur=cur.right;
+        }
+        else{
+            cur=cur.left;
+        }
+    }
+    for(int i=ans.size()-1;i>=0;i--){
+        res.add(ans.get(i));
+    }
+}
+static void addLeaves(TreeNode root,List<Integer> res){
+    if(isLeaf(root)){
+        res.add(root.data);
+        return;
+    }
+    if(root.left!=null) addLeaves(root.left,res);
+    if(root.right!=null) addLeaves(root.right,res);
+}
+
+    public static List<Integer> traverseBoundary(TreeNode root){
+        List<Integer>res=new ArrayList<>();
+        if(isLeaf(root)==false){
+            res.add(root.data);
+        }
+        addLeft(root,res);
+        addLeaves(root,res);
+        addRight(root,res);
+   return res;
+        
+    }
+}
