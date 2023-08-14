@@ -20,3 +20,24 @@ public class Solution
         leftView(root.left,list,l+1);
         leftView(root.right,list,l+1);
     }
+//Right View Of a Binary Tree
+import java.util.ArrayList;
+public class Solution 
+{
+    public static ArrayList<Integer> getLeftView(TreeNode<Integer> root) 
+    {
+        ArrayList<Integer> list=new ArrayList<>();
+        leftView(root,list,0);
+        return list;
+    }
+    static void leftView(TreeNode<Integer> root,ArrayList<Integer> list,int l){
+        if(root==null){
+            return;
+        }
+        if(list.size()==l){
+            list.add(root.data);
+        }
+        leftView(root.right,list,l+1);
+        leftView(root.left,list,l+1);
+        
+    }
