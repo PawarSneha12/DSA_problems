@@ -1,0 +1,38 @@
+////Bottom View Of Binary Tree
+
+import java.util.*;
+
+public class Solution {
+   static class   pair{
+        int hd;
+        TreeNode n;
+        pair(int hd,TreeNode n){
+            this.hd=hd;
+            this.n=n; }}
+public static List<Integer> bottomView(TreeNode root) {
+List<Integer> ans=new ArrayList<>();
+if(root==null){
+    return ans;
+}
+Queue<pair> q=new LinkedList<>();
+Map<Integer,Integer> hm=new TreeMap<>();
+q.add(new pair(0,root));
+while(!q.isEmpty()){
+    pair p=q.poll();
+    int hd=p.hd;
+    TreeNode node=p.n;
+    hm.put(hd,node.val);
+    if(node.left!=null){
+        q.add(new pair(hd-1,node.left));
+    }
+    if(node.right!=null){
+        q.add(new pair(hd+1,node.right));
+    }
+}
+for(Map.Entry<Integer,Integer> h:hm.entrySet()){
+ ans.add(h.getValue());
+}
+return ans;
+
+    }
+}
