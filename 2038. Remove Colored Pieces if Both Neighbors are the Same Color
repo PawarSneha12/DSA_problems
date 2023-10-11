@@ -6,11 +6,7 @@ class Solution {
                if(colors.charAt(i)=='A'){
                    a++;
                }
-           
            else  {
-                   b++;
-               }
-           }
-       }
+                   b++;}} }
        return a>b;
 }}
