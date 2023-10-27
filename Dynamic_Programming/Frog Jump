@@ -1,0 +1,20 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+    static int jump(int n,int[]h){
+        if(n==0){
+            return 0;
+        }
+        int l=jump(n-1,h)+Math.abs(h[n]-h[n-1]);
+        int r=Integer.MAX_VALUE;
+        if(n>1)
+           r=jump(n-2,h)+Math.abs(h[n]-h[n-2]);
+        
+  return Math.min(l,r);
+    }
+
+    public static int frogJump(int n, int heights[]) {
+       return jump(n-1,heights);
+    }
+
+}
