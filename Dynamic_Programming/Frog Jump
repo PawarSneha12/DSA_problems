@@ -1,3 +1,5 @@
+//Recursion Solution
+
 import java.util.* ;
 import java.io.*; 
 public class Solution {
@@ -19,7 +21,7 @@ public class Solution {
 
 }
 
-////DPPP
+////Memorization
 
 import java.util.* ;
 import java.io.*; 
@@ -43,6 +45,26 @@ public class Solution {
         int[]dp=new int[n];
         Arrays.fill(dp,-1);
        return jump(n-1,heights,dp);
+    }
+
+}
+
+
+///DP
+
+    public static int frogJump(int n, int heights[]) {
+        int[]dp=new int[n];
+        Arrays.fill(dp,0);
+      dp[0]=0;
+        for(int i=1;i<n;i++){
+            int f=dp[i-1]+Math.abs(heights[i]-heights[i-1]);
+            int s=Integer.MAX_VALUE;
+            if(i>1){
+                s=dp[i-2]+Math.abs(heights[i]-heights[i-2]);
+            }
+            dp[i]=Math.min(f,s);
+        }
+       return dp[n-1];
     }
 
 }
