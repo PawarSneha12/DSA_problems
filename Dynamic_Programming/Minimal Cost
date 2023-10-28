@@ -1,0 +1,46 @@
+public class Solution {
+    public static int minimizeCost(int n, int k, int []height){
+      int[]dp=new int[n];
+      Arrays.fill(dp,-1);
+        return f(n-1,k,height,dp);}
+
+         public static int f(int in, int k, int []h,int[]dp){
+    if(in==0){
+        return 0;
+    }
+    if(dp[in]!=-1){
+        return dp[in];
+    }
+    int ms=Integer.MAX_VALUE;
+    for(int i=1;i<=k;i++){
+     if(in-i>=0)  { 
+        int jump=f(in-i,k,h,dp)+Math.abs(h[in]+h[in-i]);
+        ms=Math.min(jump,ms);
+        }
+    }
+    return ms;
+    }
+}
+
+
+
+//////////////////////
+///DPPP
+
+import java.util.*;
+public class Solution {
+    public static int minimizeCost(int n, int k, int []height){
+      int[]dp=new int[n];
+      dp[0]=0;
+      for(int i=1;i<n;i++){
+         int ms=Integer.MAX_VALUE;
+          for(int j=1;j<=k;j++){
+              if(i-j>=0){
+            int jump=dp[i-j]+Math.abs(height[i]-height[i-j]);
+                  ms=Math.min(ms,jump);
+              }
+          }
+          dp[i]=ms;
+      }
+      return dp[n-1];
+    }}
