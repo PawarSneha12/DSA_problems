@@ -1,0 +1,22 @@
+class Solution {
+    public int averageOfSubtree(TreeNode root) {
+        int[]res=new int[1];
+         f(root,res);
+return res[0];
+
+        
+    }
+    int[] f(TreeNode root,int[]res){
+        if(root==null){
+            return new int[]{0,0};
+        }
+        int[]ls=f(root.left,res);
+        int[]rs=f(root.right,res);
+        int sum=root.val+ls[0]+rs[0];
+        int n=1+ls[1]+rs[1];
+        if(sum/n==root.val){
+            res[0]++;
+        }
+        return new int[]{sum,n};
+    }
+}
